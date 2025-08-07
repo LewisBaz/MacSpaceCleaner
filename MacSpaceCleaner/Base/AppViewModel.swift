@@ -31,6 +31,8 @@ class AppViewModel {
         case clearTVOSDeviceSupport
         case clearCaches
         case removeOldSimulators
+        case removeSimulatorPreviews
+        case removeSimulatorsData
         case clearCocoaPodsCache
         case emptyTrash
     }
@@ -85,6 +87,20 @@ class AppViewModel {
             let successTitle = "Remove Old Simulators"
             let successMessage = "Old simulators removed successfully!"
             let failureMessage = "Failed to remove old simulators"
+            self.runShellCommand(launchPath: launchPath, arguments: arguments, successTitle: successTitle, successMessage: successMessage, failureMessage: failureMessage)
+        case .removeSimulatorPreviews:
+            let launchPath = "/usr/bin/xcrun"
+            let arguments = ["simctl", "--set", "previews", "delete", "all"]
+            let successTitle = "Remove Simulator Previews"
+            let successMessage = "Simulator Previews removed successfully!"
+            let failureMessage = "Failed to remove Simulator Previews"
+            self.runShellCommand(launchPath: launchPath, arguments: arguments, successTitle: successTitle, successMessage: successMessage, failureMessage: failureMessage)
+        case .removeSimulatorsData:
+            let launchPath = "/usr/bin/xcrun"
+            let arguments = ["simctl", "erase", "all"]
+            let successTitle = "Remove Simulators Data"
+            let successMessage = "Simulators Data removed successfully!"
+            let failureMessage = "Failed to remove Simulators Data"
             self.runShellCommand(launchPath: launchPath, arguments: arguments, successTitle: successTitle, successMessage: successMessage, failureMessage: failureMessage)
         case .clearCocoaPodsCache:
             let launchPath = "/bin/bash"
