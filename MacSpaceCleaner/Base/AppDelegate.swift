@@ -98,6 +98,9 @@ private extension AppDelegate {
             NSMenuItem(title: "Clear Cocoa Pods Cache",       action: #selector(clearCocoaPodsCache),       keyEquivalent: "P"),
             NSMenuItem(title: "Empty Trash",                  action: #selector(emptyTrash),                keyEquivalent: "D"),
             NSMenuItem.separator(),
+            NSMenuItem(title: "Remove Simulator Previews", action: #selector(removeSimulatorPreviews), keyEquivalent: "O"),
+            NSMenuItem(title: "Remove Simulators Data", action: #selector(removeSimulatorsData), keyEquivalent: "L"),
+            NSMenuItem.separator(),
             NSMenuItem(title: "Clear All",                    action: #selector(clearAll),                  keyEquivalent: "E"),
             NSMenuItem.separator(),
             NSMenuItem(title: "About MSC",                    action: #selector(about),                     keyEquivalent: ""),
@@ -179,6 +182,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func clearCaches()               { self.viewModel.perform(action: .clearCaches)               }
     func removeOldSimulators()       { self.viewModel.perform(action: .removeOldSimulators)       }
     func clearCocoaPodsCache()       { self.viewModel.perform(action: .clearCocoaPodsCache)       }
+    func removeSimulatorPreviews()   { self.viewModel.perform(action: .removeSimulatorPreviews)   }
+    func removeSimulatorsData()      { self.viewModel.perform(action: .removeSimulatorsData)      }
     func emptyTrash()                { self.viewModel.perform(action: .emptyTrash)                }
     func clearAll()                  { self.viewModel.clearAll()                                  }
     
